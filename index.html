@@ -1,0 +1,173 @@
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>樂齡桌遊資料庫</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Senior-friendly board games</p>
+        <h1>樂齡桌遊資料庫</h1>
+      </div>
+      <div class="stats" aria-label="資料統計">
+        <span id="resultCount">100 款</span>
+        <span id="favoriteCount">0 收藏</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="搜尋與篩選">
+        <label class="search-box">
+          <span>搜尋</span>
+          <input id="searchInput" type="search" placeholder="輸入桌遊、標籤、類型..." autocomplete="off" />
+        </label>
+
+        <label>
+          <span>分類</span>
+          <select id="categoryFilter">
+            <option value="all">全部分類</option>
+          </select>
+        </label>
+
+        <label>
+          <span>標籤</span>
+          <select id="tagFilter">
+            <option value="all">全部標籤</option>
+          </select>
+        </label>
+
+        <label>
+          <span>排序</span>
+          <select id="sortSelect">
+            <option value="rank">排名優先</option>
+            <option value="score">分數高到低</option>
+            <option value="name">名稱 A-Z</option>
+            <option value="favorites">我的最愛優先</option>
+          </select>
+        </label>
+
+        <button id="favoritesOnly" class="toggle-button" type="button" aria-pressed="false">只看最愛</button>
+      </section>
+
+      <section id="activeFilters" class="active-filters" aria-live="polite"></section>
+      <section id="gameGrid" class="game-grid" aria-label="桌遊清單"></section>
+    </main>
+
+    <footer class="methodology" aria-labelledby="methodologyTitle">
+      <div class="methodology-inner">
+        <div class="methodology-heading">
+          <p class="eyebrow">Methodology</p>
+          <h2 id="methodologyTitle">評選方法與資料來源</h2>
+          <p>
+            本排名以樂齡玩家的實際使用情境為核心，綜合規則負擔、互動品質、認知參與、操作友善度與外部評價。
+            分數為本資料庫依下列規則整理的編輯評分，不是醫療建議，也不是任何單一機構的官方排名。
+          </p>
+        </div>
+
+        <section class="score-method" aria-labelledby="scoreTitle">
+          <div class="section-heading">
+            <h3 id="scoreTitle">100 分評分規則</h3>
+            <p>各項加總後依總分排序；同分時依樂齡友善、容易教學、權威評價的順序比較。</p>
+          </div>
+          <div class="score-grid">
+            <article>
+              <strong>25 分</strong>
+              <h4>容易理解與教學</h4>
+              <p>規則量、設置時間、回合結構、首次遊玩需要的說明成本。</p>
+            </article>
+            <article>
+              <strong>20 分</strong>
+              <h4>社交與參與感</h4>
+              <p>是否促進聊天、合作、共同決策，以及等待時間是否合理。</p>
+            </article>
+            <article>
+              <strong>20 分</strong>
+              <h4>認知刺激</h4>
+              <p>觀察、記憶、語言、空間、數字與策略運用的多樣性，並避免過度負荷。</p>
+            </article>
+            <article>
+              <strong>15 分</strong>
+              <h4>樂齡操作友善</h4>
+              <p>文字與圖示辨識、顏色依賴、手部操作、桌面空間及遊戲時間。</p>
+            </article>
+            <article>
+              <strong>20 分</strong>
+              <h4>權威評價與成熟度</h4>
+              <p>BGG 社群評價與資料完整度、重要獎項、出版成熟度及長期口碑。</p>
+            </article>
+          </div>
+          <p class="formula"><strong>總分公式：</strong>25＋20＋20＋15＋20＝100 分</p>
+        </section>
+
+        <section class="source-section" aria-labelledby="sourceTitle">
+          <div class="section-heading">
+            <h3 id="sourceTitle">資料依據</h3>
+            <p>資料最後整理：2026 年 7 月 9 日。外部網站內容與影片可能隨時間更新。</p>
+          </div>
+          <ul class="source-list">
+            <li>
+              <a href="https://boardgamegeek.com/browse/boardgame?sort=rank" target="_blank" rel="noreferrer">BoardGameGeek</a>
+              <span>遊戲資料、玩家評分、複雜度、遊戲時間、排名與多數封面來源。</span>
+            </li>
+            <li>
+              <a href="https://www.spiel-des-jahres.de/en/games/" target="_blank" rel="noreferrer">Spiel des Jahres</a>
+              <span>年度遊戲、兒童遊戲與進階遊戲的得獎及推薦紀錄。</span>
+            </li>
+            <li>
+              <a href="https://www.nia.nih.gov/health/healthy-aging/what-do-we-know-about-healthy-aging" target="_blank" rel="noreferrer">美國 National Institute on Aging</a>
+              <span>社交、休閒與心智刺激活動對健康老化的研究背景；不代表特定桌遊療效。</span>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+              <span>教學影片以中文優先，無合適中文內容時提供英文搜尋備援。</span>
+            </li>
+            <li>
+              <a href="https://images.google.com/" target="_blank" rel="noreferrer">Google 圖片與官方出版商</a>
+              <span>核對產品外觀；每款遊戲詳情均提供個別封面來源與圖片搜尋。</span>
+            </li>
+            <li>
+              <a href="https://www.sosostudio.com/" target="_blank" rel="noreferrer">SOSO Studio 艸艸設計</a>
+              <span>臺灣原創替代遊戲的出版資訊、作品資料與官方封面。</span>
+            </li>
+            <li>
+              <a href="https://biggo.com.tw/" target="_blank" rel="noreferrer">BigGo 臺灣商品比價</a>
+              <span>確認臺灣商城商品結果；庫存與價格仍以連結開啟當下為準。</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+
+    <dialog id="gameDialog" class="game-dialog">
+      <div class="dialog-body">
+        <button id="closeDialog" class="icon-button close-button" type="button" aria-label="關閉">×</button>
+        <div id="dialogContent"></div>
+      </div>
+    </dialog>
+
+    <template id="gameCardTemplate">
+      <article class="game-card">
+        <button class="favorite-button" type="button" aria-label="加入最愛">♡</button>
+        <button class="card-main" type="button">
+          <div class="cover-wrap"></div>
+          <div class="card-content">
+            <div class="rank-score">
+              <span class="rank"></span>
+              <span class="score"></span>
+            </div>
+            <h2></h2>
+            <p class="meta"></p>
+            <div class="tags"></div>
+          </div>
+        </button>
+      </article>
+    </template>
+
+    <script src="./games.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
